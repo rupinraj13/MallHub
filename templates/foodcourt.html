@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>MallHub Food Court</title>
+
+<style>
+
+body{
+    font-family:Arial;
+    background:#f4f6f7;
+}
+
+
+.header{
+
+    background:#e67e22;
+    color:white;
+    padding:20px;
+    text-align:center;
+
+}
+
+
+.cart-btn{
+
+    background:#2c3e50;
+    color:white;
+    padding:10px 20px;
+    text-decoration:none;
+    border-radius:8px;
+
+}
+
+
+.container{
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+    padding:30px;
+
+}
+
+
+.card{
+
+    background:white;
+    padding:25px;
+    text-align:center;
+    border-radius:15px;
+    box-shadow:0 5px 15px #ccc;
+
+}
+
+
+.price{
+
+    color:green;
+    font-size:20px;
+    font-weight:bold;
+
+}
+
+
+button{
+
+    background:#3498db;
+    color:white;
+    border:none;
+    padding:12px 25px;
+    border-radius:8px;
+    cursor:pointer;
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="header">
+
+<h1>
+🍔 MallHub Food Court
+</h1>
+
+
+<a class="cart-btn" href="/cart">
+🛒 View Cart
+</a>
+
+
+</div>
+
+
+
+<div class="container">
+
+
+{% for food in foods %}
+
+
+<div class="card">
+
+
+<h2>
+{{food.restaurant}}
+</h2>
+
+
+<h3>
+{{food.food_name}}
+</h3>
+
+
+<p class="price">
+₹{{food.price}}
+</p>
+
+
+
+<form method="POST" action="/add_cart">
+
+
+<input type="hidden"
+name="food"
+value="{{food.food_name}}">
+
+
+<input type="hidden"
+name="price"
+value="{{food.price}}">
+
+
+
+<button type="submit">
+
+Add Cart 🛒
+
+</button>
+
+
+</form>
+
+
+
+</div>
+
+
+{% endfor %}
+
+
+</div>
+
+
+
+</body>
+
+</html>

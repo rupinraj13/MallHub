@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Notifications</title>
+
+<style>
+
+body{
+    font-family:Arial,sans-serif;
+    background:#f4f6f9;
+}
+
+.container{
+    width:80%;
+    margin:40px auto;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    margin-bottom:20px;
+    border-radius:10px;
+    box-shadow:0 5px 10px rgba(0,0,0,0.1);
+}
+
+h1{
+    text-align:center;
+    color:#2c3e50;
+}
+
+h2{
+    color:#3498db;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:20px;
+    background:#3498db;
+    color:white;
+    padding:10px 20px;
+    text-decoration:none;
+    border-radius:8px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🔔 Notifications</h1>
+
+{% for notice in notices %}
+
+<div class="card">
+
+<h2>{{ notice.title }}</h2>
+
+<p>{{ notice.message }}</p>
+
+<small>{{ notice.created_at }}</small>
+
+</div>
+
+{% endfor %}
+
+<a href="/dashboard" class="btn">
+⬅ Back to Dashboard
+</a>
+
+</div>
+
+</body>
+
+</html>

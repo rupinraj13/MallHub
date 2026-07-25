@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>MallHub Admin Dashboard</title>
+
+<style>
+
+body{
+background:#eef3f8;
+font-family:Arial;
+}
+
+.header{
+background:#2c3e50;
+color:white;
+padding:20px;
+text-align:center;
+}
+
+.cards{
+
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:30px;
+padding:40px;
+
+}
+
+.card{
+
+background:white;
+padding:30px;
+border-radius:15px;
+text-align:center;
+box-shadow:0 5px 15px rgba(0,0,0,.15);
+
+}
+
+.card h1{
+font-size:45px;
+color:#3498db;
+}
+
+.card p{
+font-size:22px;
+margin-top:15px;
+}
+
+.back{
+
+display:block;
+width:220px;
+margin:20px auto;
+background:#3498db;
+color:white;
+text-align:center;
+padding:15px;
+text-decoration:none;
+border-radius:10px;
+
+}
+
+.chart-link{
+
+background:#27ae60;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+<h1>
+📊 MallHub Analytics Dashboard
+</h1>
+
+</div>
+
+<div class="cards">
+
+<div class="card">
+
+<h1>{{ users }}</h1>
+
+<p>Total Users</p>
+
+</div>
+
+<div class="card">
+
+<h1>{{ products }}</h1>
+
+<p>Total Products</p>
+
+</div>
+
+<div class="card">
+
+<h1>{{ orders }}</h1>
+
+<p>Total Orders</p>
+
+</div>
+
+<div class="card">
+
+<h1>₹{{ revenue }}</h1>
+
+<p>Total Revenue</p>
+
+</div>
+
+</div>
+
+<a href="/sales_chart" class="back chart-link">
+
+📈 View Sales Chart
+
+</a>
+
+<a href="/dashboard" class="back">
+
+⬅ Dashboard
+
+</a>
+
+</body>
+
+</html>

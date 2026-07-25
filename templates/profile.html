@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>My Profile - MallHub</title>
+
+    <style>
+
+        body{
+            margin:0;
+            font-family:Arial,sans-serif;
+            background:#f4f6f9;
+        }
+
+        .header{
+            background:#2c3e50;
+            color:white;
+            padding:20px;
+            text-align:center;
+        }
+
+        .profile{
+            width:450px;
+            margin:40px auto;
+            background:white;
+            padding:30px;
+            border-radius:15px;
+            box-shadow:0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        h2{
+            text-align:center;
+            color:#2c3e50;
+        }
+
+        p{
+            font-size:18px;
+            margin:15px 0;
+        }
+
+        .btn{
+            display:inline-block;
+            margin-top:20px;
+            padding:12px 25px;
+            background:#3498db;
+            color:white;
+            text-decoration:none;
+            border-radius:8px;
+        }
+
+        .btn:hover{
+            background:#2980b9;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="header">
+    <h1>👤 My Profile</h1>
+</div>
+
+<div class="profile">
+
+    <h2>User Details</h2>
+
+    <p><strong>Name:</strong> {{ user.fullname }}</p>
+
+    <p><strong>Email:</strong> {{ user.email }}</p>
+
+    <p><strong>Phone:</strong> {{ user.phone }}</p>
+
+    <a href="/dashboard" class="btn">⬅ Back to Dashboard</a>
+
+</div>
+
+</body>
+
+</html>

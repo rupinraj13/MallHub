@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>MallHub Smart Parking</title>
+
+<style>
+
+body{
+
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#f1f5f9;
+
+}
+
+
+/* Header */
+
+.header{
+
+    background:linear-gradient(135deg,#2c3e50,#3498db);
+    color:white;
+    padding:20px;
+    text-align:center;
+
+}
+
+
+.header a{
+
+    color:white;
+    text-decoration:none;
+    background:#e74c3c;
+    padding:10px 20px;
+    border-radius:8px;
+
+}
+
+
+
+/* Parking Area */
+
+.container{
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+    padding:40px;
+
+}
+
+
+
+/* Slot Card */
+
+.card{
+
+    background:white;
+    padding:25px;
+    text-align:center;
+    border-radius:20px;
+    box-shadow:0px 8px 20px rgba(0,0,0,0.15);
+
+}
+
+
+.card h2{
+
+    color:#2c3e50;
+
+}
+
+
+
+.available{
+
+    color:#27ae60;
+    font-size:20px;
+    font-weight:bold;
+
+}
+
+
+.occupied{
+
+    color:#e74c3c;
+    font-size:20px;
+    font-weight:bold;
+
+}
+
+
+
+/* Input */
+
+input{
+
+    width:80%;
+    padding:12px;
+    border-radius:8px;
+    border:1px solid #ccc;
+
+}
+
+
+
+/* Button */
+
+button{
+
+    background:#3498db;
+    color:white;
+    border:none;
+    padding:12px 25px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:15px;
+
+}
+
+
+button:hover{
+
+    background:#2980b9;
+
+}
+
+
+
+/* Responsive */
+
+@media(max-width:900px){
+
+.container{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+
+@media(max-width:600px){
+
+.container{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+
+</style>
+
+
+</head>
+
+
+<body>
+
+
+
+<div class="header">
+
+
+<h1>
+🚗 MallHub Smart Parking
+</h1>
+
+
+<p>
+Real-time Parking Availability System
+</p>
+
+
+<a href="/dashboard">
+⬅ Back Dashboard
+</a>
+
+
+</div>
+
+
+
+
+<div class="container">
+
+
+
+{% for slot in slots %}
+
+
+
+<div class="card">
+
+
+<h2>
+🅿 Slot {{slot.slot_number}}
+</h2>
+
+
+
+{% if slot.status == "Available" %}
+
+
+<p class="available">
+🟢 Available
+</p>
+
+
+
+<form method="POST" action="/book_parking">
+
+
+<input type="hidden"
+name="slot"
+value="{{slot.slot_number}}">
+
+
+
+<input type="text"
+name="vehicle"
+placeholder="Enter Vehicle Number"
+required>
+
+
+<br><br>
+
+
+<button type="submit">
+
+Book Parking
+
+</button>
+
+
+</form>
+
+
+
+{% else %}
+
+
+
+<p class="occupied">
+🔴 Occupied
+</p>
+
+
+<button disabled>
+
+Not Available
+
+</button>
+
+
+
+{% endif %}
+
+
+
+</div>
+
+
+
+{% endfor %}
+
+
+
+</div>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MallHub | Order History</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#eef3f8;
+}
+
+/* Header */
+
+.header{
+
+    background:linear-gradient(135deg,#1e3c72,#2a5298);
+    color:white;
+    padding:25px;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+
+}
+
+.header h1{
+
+    font-size:35px;
+
+}
+
+.header p{
+
+    margin-top:8px;
+    font-size:18px;
+
+}
+
+/* Table */
+
+.container{
+
+    width:95%;
+    margin:35px auto;
+
+}
+
+table{
+
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 8px 20px rgba(0,0,0,.12);
+
+}
+
+th{
+
+    background:#3498db;
+    color:white;
+    padding:18px;
+
+}
+
+td{
+
+    padding:15px;
+    text-align:center;
+    border-bottom:1px solid #eee;
+
+}
+
+tr:hover{
+
+    background:#f9fbff;
+
+}
+
+/* Status */
+
+.preparing{
+
+    background:#fff3cd;
+    color:#856404;
+    padding:8px 15px;
+    border-radius:20px;
+    font-weight:bold;
+
+}
+
+.delivery{
+
+    background:#d1ecf1;
+    color:#0c5460;
+    padding:8px 15px;
+    border-radius:20px;
+    font-weight:bold;
+
+}
+
+.delivered{
+
+    background:#d4edda;
+    color:#155724;
+    padding:8px 15px;
+    border-radius:20px;
+    font-weight:bold;
+
+}
+
+/* Buttons */
+
+.buttons{
+
+    margin:40px;
+    text-align:center;
+
+}
+
+.btn{
+
+    display:inline-block;
+    margin:10px;
+    padding:14px 30px;
+    text-decoration:none;
+    color:white;
+    border-radius:10px;
+    font-weight:bold;
+    transition:.3s;
+
+}
+
+.dashboard{
+
+    background:#3498db;
+
+}
+
+.dashboard:hover{
+
+    background:#2874a6;
+
+}
+
+.food{
+
+    background:#27ae60;
+
+}
+
+.food:hover{
+
+    background:#1e8449;
+
+}
+
+.invoice{
+
+    background:#e67e22;
+    border:none;
+    cursor:pointer;
+    font-size:16px;
+    font-family:inherit;
+
+}
+
+.invoice:hover{
+
+    background:#ca6f1e;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+<h1>📦 My Order History</h1>
+
+<p>
+Track all your MallHub Food Court orders
+</p>
+
+</div>
+
+<div class="container">
+
+<table>
+
+<tr>
+
+<th>#</th>
+<th>Food Item</th>
+<th>Price</th>
+<th>Quantity</th>
+<th>Total</th>
+<th>Status</th>
+
+</tr>
+
+{% for order in orders %}
+
+<tr>
+
+<td>{{ loop.index }}</td>
+
+<td>{{ order.food_name }}</td>
+
+<td>₹{{ order.price }}</td>
+
+<td>{{ order.quantity }}</td>
+
+<td><b>₹{{ order.total }}</b></td>
+
+<td>
+
+{% if order.order_status=="Preparing" %}
+
+<span class="preparing">
+🟡 Preparing
+</span>
+
+{% elif order.order_status=="Out for Delivery" %}
+
+<span class="delivery">
+🚚 Out for Delivery
+</span>
+
+{% else %}
+
+<span class="delivered">
+✅ Delivered
+</span>
+
+{% endif %}
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+<div class="buttons">
+
+<a href="/foodcourt" class="btn food">
+🍔 Order More Food
+</a>
+
+<a href="/invoice" class="btn invoice">
+📄 Download Invoice
+</a>
+
+<a href="/dashboard" class="btn dashboard">
+🏠 Back to Dashboard
+</a>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>MallHub Login</title>
+
+<style>
+
+body {
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:linear-gradient(135deg,#3498db,#2ecc71);
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+
+.login-box {
+
+    background:white;
+    width:350px;
+    padding:30px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0px 10px 25px rgba(0,0,0,0.2);
+
+}
+
+
+h1 {
+    color:#2c3e50;
+}
+
+
+input {
+
+    width:90%;
+    padding:12px;
+    margin:10px;
+    border:1px solid #ccc;
+    border-radius:8px;
+
+}
+
+
+button {
+
+    width:95%;
+    padding:12px;
+    background:#3498db;
+    color:white;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+    cursor:pointer;
+
+}
+
+
+button:hover {
+
+    background:#2980b9;
+
+}
+
+
+a {
+
+    text-decoration:none;
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="login-box">
+
+
+<h1>🏬 MallHub Login</h1>
+
+
+<form method="POST">
+
+
+<label>Email</label>
+
+<input
+type="email"
+name="email"
+placeholder="Enter Email"
+required>
+
+
+<label>Password</label>
+
+<input
+type="password"
+name="password"
+placeholder="Enter Password"
+required>
+
+
+<button type="submit">
+Login
+</button>
+
+
+</form>
+
+
+<br>
+
+
+<a href="/register">
+Create New Account
+</a>
+
+
+</div>
+
+
+</body>
+
+</html>

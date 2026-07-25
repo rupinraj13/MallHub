@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>MallHub Checkout</title>
+
+    <style>
+
+    body{
+        font-family:Arial;
+        background:#f4f6f7;
+        padding:40px;
+    }
+
+    .box{
+        width:700px;
+        margin:auto;
+        background:white;
+        padding:30px;
+        border-radius:15px;
+        box-shadow:0 0 20px #ccc;
+    }
+
+    input,select{
+        width:100%;
+        padding:12px;
+        margin:10px 0;
+    }
+
+    button{
+        background:#27ae60;
+        color:white;
+        border:none;
+        padding:15px;
+        width:100%;
+        cursor:pointer;
+        border-radius:10px;
+    }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+<h1>🛍 Shopping Checkout</h1>
+
+<h2>Total : ₹{{ "%.2f"|format(total) }}</h2>
+
+<form action="/shopping_payment" method="POST">
+
+<input
+type="text"
+name="address"
+placeholder="Delivery Address"
+required>
+
+<select name="payment">
+
+<option>Cash On Delivery</option>
+
+<option>UPI</option>
+
+<option>Credit Card</option>
+
+<option>Debit Card</option>
+
+</select>
+
+<input
+type="hidden"
+name="amount"
+value="{{ '%.2f'|format(total) }}">
+
+<button>
+
+Proceed To Payment
+
+</button>
+
+</form>
+
+<a href="/shopping_checkout">
+    <button>
+        Checkout
+    </button>
+</a>
+
+</div>
+
+</body>
+
+</html>

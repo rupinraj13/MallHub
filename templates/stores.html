@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Mall Store Locator</title>
+
+<style>
+
+body{
+    font-family:Arial;
+    background:#f4f6f9;
+}
+
+.container{
+    width:90%;
+    margin:auto;
+    padding:30px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+}
+
+th,td{
+    padding:15px;
+    border:1px solid #ddd;
+    text-align:center;
+}
+
+th{
+    background:#3498db;
+    color:white;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:20px;
+    padding:10px 20px;
+    background:#3498db;
+    color:white;
+    text-decoration:none;
+    border-radius:8px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🏬 Mall Store Locator</h1>
+
+<table>
+
+<tr>
+<th>Store</th>
+<th>Category</th>
+<th>Floor</th>
+<th>Shop No</th>
+</tr>
+
+{% for store in stores %}
+
+<tr>
+
+<td>{{ store.store_name }}</td>
+
+<td>{{ store.category }}</td>
+
+<td>{{ store.floor }}</td>
+
+<td>{{ store.shop_no }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<a href="/dashboard" class="btn">
+Back Dashboard
+</a>
+
+</div>
+
+</body>
+
+</html>

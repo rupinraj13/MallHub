@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>MallHub Cart</title>
+
+<style>
+
+body{
+    font-family:Arial, sans-serif;
+    background:#f4f6f7;
+    margin:0;
+}
+
+.header{
+    background:#2c3e50;
+    color:white;
+    padding:20px;
+    text-align:center;
+}
+
+.container{
+    width:80%;
+    margin:auto;
+    margin-top:30px;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    margin-bottom:15px;
+    border-radius:10px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.food-name{
+    font-size:22px;
+    font-weight:bold;
+    color:#2c3e50;
+}
+
+.price{
+    color:green;
+}
+
+.remove-btn{
+    background:#e74c3c;
+    color:white;
+    padding:10px 15px;
+    text-decoration:none;
+    border-radius:5px;
+}
+
+.total-box{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    text-align:center;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.pay-btn{
+    background:#27ae60;
+    color:white;
+    border:none;
+    padding:12px 25px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+.back-btn{
+    background:#3498db;
+    color:white;
+    text-decoration:none;
+    padding:10px 20px;
+    border-radius:8px;
+}
+
+.coupon-form{
+    margin:15px 0;
+}
+
+.coupon-form input[type=text]{
+    padding:10px;
+    border-radius:8px;
+    border:1px solid #ccc;
+    width:200px;
+}
+
+.coupon-form button{
+    padding:10px 15px;
+    background:#f39c12;
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:14px;
+    margin-left:8px;
+}
+
+.coupon-form button:hover{
+    background:#d68910;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+<h1>🛒 MallHub Shopping Cart</h1>
+
+</div>
+
+<div class="container">
+
+{% if items %}
+
+{% for item in items %}
+
+<div class="card">
+
+<div class="food-name">
+{{item.food}}
+</div>
+
+<p class="price">
+Price: ₹{{item.price}}
+</p>
+
+<p>
+Quantity: {{item.quantity}}
+</p>
+
+<p>
+Total: ₹{{item.total}}
+</p>
+
+<a class="remove-btn"
+href="/remove_cart/{{loop.index0}}">
+Remove ❌
+</a>
+
+</div>
+
+{% endfor %}
+
+<div class="total-box">
+
+<h2>
+Grand Total: ₹{{total}}
+</h2>
+
+<form class="coupon-form" action="/apply_coupon" method="POST">
+
+<input
+type="text"
+name="coupon"
+placeholder="Enter Coupon Code">
+
+<button type="submit">
+
+🎁 Apply Coupon
+
+</button>
+
+</form>
+
+<br>
+
+<a href="/payment">
+<button class="pay-btn">
+💳 Proceed to Payment
+</button>
+</a>
+
+<br><br>
+
+<a class="back-btn" href="/foodcourt">
+🍔 Continue Shopping
+</a>
+
+</div>
+
+{% else %}
+
+<div class="total-box">
+
+<h2>
+🛒 Your Cart is Empty
+</h2>
+
+<a class="back-btn" href="/foodcourt">
+Go to Food Court
+</a>
+
+</div>
+
+{% endif %}
+
+</div>
+
+</body>
+
+</html>

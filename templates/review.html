@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Write Review | MallHub</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#eef3f8;
+}
+
+.container{
+
+    width:500px;
+    margin:60px auto;
+    background:white;
+    padding:35px;
+    border-radius:15px;
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
+
+}
+
+h1{
+
+    text-align:center;
+    color:#2c3e50;
+    margin-bottom:30px;
+
+}
+
+label{
+
+    font-weight:bold;
+    display:block;
+    margin-top:15px;
+    margin-bottom:8px;
+
+}
+
+input,select,textarea{
+
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+
+}
+
+textarea{
+
+    height:120px;
+    resize:none;
+
+}
+
+button{
+
+    width:100%;
+    margin-top:25px;
+    padding:14px;
+    border:none;
+    border-radius:8px;
+    background:#3498db;
+    color:white;
+    font-size:17px;
+    cursor:pointer;
+
+}
+
+button:hover{
+
+    background:#1565c0;
+
+}
+
+.back{
+
+    display:block;
+    text-align:center;
+    margin-top:20px;
+    text-decoration:none;
+    color:#3498db;
+    font-weight:bold;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>⭐ Product Review</h1>
+
+<form action="/submit_review" method="POST">
+
+<input type="hidden"
+name="product_id"
+value="{{ product.id }}">
+
+<input type="hidden"
+name="product_name"
+value="{{ product.product_name }}">
+
+<label>Product</label>
+
+<input
+type="text"
+value="{{ product.product_name }}"
+readonly>
+
+<label>Rating</label>
+
+<select name="rating" required>
+
+<option value="5">⭐⭐⭐⭐⭐ Excellent</option>
+
+<option value="4">⭐⭐⭐⭐ Very Good</option>
+
+<option value="3">⭐⭐⭐ Good</option>
+
+<option value="2">⭐⭐ Fair</option>
+
+<option value="1">⭐ Poor</option>
+
+</select>
+
+<label>Your Review</label>
+
+<textarea
+name="review"
+placeholder="Write your review here..."
+required></textarea>
+
+<button type="submit">
+
+Submit Review ⭐
+
+</button>
+
+</form>
+
+<a href="/shopping" class="back">
+
+⬅ Back to Shopping
+
+</a>
+
+</div>
+
+</body>
+
+</html>

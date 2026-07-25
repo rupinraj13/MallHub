@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>MallHub AI Assistant</title>
+
+<style>
+
+body{
+    font-family:Arial;
+    background:#eef3f8;
+}
+
+.container{
+    width:60%;
+    margin:50px auto;
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+input{
+    width:100%;
+    padding:15px;
+    margin-top:20px;
+    border-radius:8px;
+}
+
+button{
+    margin-top:20px;
+    padding:12px 25px;
+    background:#3498db;
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.answer{
+    margin-top:30px;
+    background:#ecf0f1;
+    padding:20px;
+    border-radius:10px;
+    font-size:18px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🤖 MallHub AI Assistant</h1>
+
+<form action="/ask_ai" method="POST">
+
+<input
+type="text"
+name="question"
+placeholder="Ask something...">
+
+<button>
+Ask AI
+</button>
+
+</form>
+
+{% if answer %}
+
+<div class="answer">
+
+{{ answer }}
+
+</div>
+
+{% endif %}
+
+</div>
+
+</body>
+
+</html>

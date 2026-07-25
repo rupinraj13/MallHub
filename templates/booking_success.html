@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Order Successful | MallHub</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f4f7fb;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.container{
+
+    background:white;
+    width:500px;
+    padding:40px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+
+}
+
+.success{
+
+    font-size:70px;
+
+}
+
+h1{
+
+    color:#27ae60;
+    margin:20px 0;
+
+}
+
+.info{
+
+    margin:25px 0;
+    text-align:left;
+
+}
+
+.info p{
+
+    font-size:18px;
+    padding:12px 0;
+    border-bottom:1px solid #eee;
+
+}
+
+span{
+
+    font-weight:bold;
+    color:#2c3e50;
+
+}
+
+.message{
+
+    color:#555;
+    margin:20px 0;
+
+}
+
+.buttons{
+
+    margin-top:30px;
+    display:flex;
+    justify-content:center;
+    gap:15px;
+
+}
+
+.btn{
+
+    text-decoration:none;
+    padding:12px 24px;
+    border-radius:10px;
+    color:white;
+    font-weight:bold;
+
+}
+
+.dashboard{
+
+    background:#3498db;
+
+}
+
+.dashboard:hover{
+
+    background:#2980b9;
+
+}
+
+.orders{
+
+    background:#27ae60;
+
+}
+
+.orders:hover{
+
+    background:#1e8449;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="success">
+✅
+</div>
+
+<h1>Order Confirmed</h1>
+
+<div class="info">
+
+<p>
+🍔 <span>Food :</span> {{ food }}
+</p>
+
+<p>
+💰 <span>Price :</span> ₹{{ price }}
+</p>
+
+</div>
+
+<p class="message">
+Thank you for ordering from <b>MallHub Food Court</b>.<br>
+Your order has been placed successfully.
+</p>
+
+<div class="buttons">
+
+<a href="/dashboard" class="btn dashboard">
+🏠 Dashboard
+</a>
+
+<a href="/order_history" class="btn orders">
+📦 My Orders
+</a>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

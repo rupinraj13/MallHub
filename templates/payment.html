@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>MallHub Payment</title>
+
+</head>
+
+
+<body>
+
+
+<h1>💳 MallHub Payment</h1>
+
+
+<h2>
+Total Amount: ₹{{total}}
+</h2>
+
+
+
+<form method="POST" action="/process_payment">
+
+
+<input type="hidden"
+name="amount"
+value="{{total}}">
+
+
+
+<select name="method">
+
+
+<option>
+UPI
+</option>
+
+
+<option>
+Credit Card
+</option>
+
+
+<option>
+Debit Card
+</option>
+
+
+<option>
+Cash
+</option>
+
+
+</select>
+
+
+<br><br>
+
+
+<button>
+Pay Now
+</button>
+
+
+</form>
+
+
+</body>
+
+</html>

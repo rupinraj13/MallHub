@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>MallHub Cinema</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f1f5f9;
+}
+
+/* Header */
+
+.header{
+    background:linear-gradient(135deg,#111827,#e11d48);
+    color:white;
+    text-align:center;
+    padding:30px;
+}
+
+.header h1{
+    font-size:40px;
+}
+
+.header p{
+    margin-top:10px;
+    font-size:18px;
+}
+
+/* Navigation */
+
+.nav{
+    text-align:center;
+    margin:20px;
+}
+
+.nav a{
+    text-decoration:none;
+    background:#2563eb;
+    color:white;
+    padding:12px 25px;
+    border-radius:10px;
+}
+
+/* Movie Grid */
+
+.movies{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+    padding:40px;
+}
+
+/* Card */
+
+.card{
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 8px 20px rgba(0,0,0,0.1);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.card img{
+    width:100%;
+    height:350px;
+    object-fit:cover;
+}
+
+.content{
+    padding:20px;
+}
+
+.content h2{
+    color:#111827;
+}
+
+.genre{
+    color:#6b7280;
+    margin:10px 0;
+}
+
+.rating{
+    color:#f59e0b;
+    font-weight:bold;
+}
+
+.price{
+    color:#16a34a;
+    font-size:22px;
+    margin:10px 0;
+}
+
+select,
+input{
+    width:100%;
+    padding:10px;
+    margin-top:10px;
+    border-radius:8px;
+    border:1px solid #ddd;
+}
+
+button{
+    width:100%;
+    background:#e11d48;
+    color:white;
+    border:none;
+    padding:14px;
+    margin-top:15px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+button:hover{
+    background:#be123c;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+<h1>🎬 MallHub Cinema</h1>
+
+<p>Book Movies Anytime, Anywhere</p>
+
+</div>
+
+<div class="nav">
+<a href="/dashboard">🏠 Back To Dashboard</a>
+</div>
+
+<div class="movies">
+
+<!-- Movie 1 -->
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba">
+
+<div class="content">
+
+<h2>🚀 Space Adventure</h2>
+
+<p class="genre">Sci-Fi | Action</p>
+
+<p class="rating">⭐ 4.8 / 5</p>
+
+<p class="price">₹250</p>
+
+<form method="POST" action="/book_movie">
+
+<input type="hidden"
+name="movie"
+value="Space Adventure">
+
+<select name="time">
+
+<option>10:00 AM</option>
+<option>2:00 PM</option>
+<option>7:00 PM</option>
+
+</select>
+
+<select name="seat">
+
+<option>Silver</option>
+<option>Gold</option>
+<option>VIP</option>
+
+</select>
+
+<button>
+🎟 Book Ticket
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+<!-- Movie 2 -->
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c">
+
+<div class="content">
+
+<h2>❤️ Love Story</h2>
+
+<p class="genre">Romance | Drama</p>
+
+<p class="rating">⭐ 4.5 / 5</p>
+
+<p class="price">₹200</p>
+
+<form method="POST" action="/book_movie">
+
+<input type="hidden"
+name="movie"
+value="Love Story">
+
+<select name="time">
+
+<option>11:00 AM</option>
+<option>4:00 PM</option>
+<option>9:00 PM</option>
+
+</select>
+
+<select name="seat">
+
+<option>Silver</option>
+<option>Gold</option>
+<option>VIP</option>
+
+</select>
+
+<button>
+🎟 Book Ticket
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+<!-- Movie 3 -->
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1">
+
+<div class="content">
+
+<h2>🔥 Action Hero</h2>
+
+<p class="genre">Action | Thriller</p>
+
+<p class="rating">⭐ 4.9 / 5</p>
+
+<p class="price">₹300</p>
+
+<form method="POST" action="/book_movie">
+
+<input type="hidden"
+name="movie"
+value="Action Hero">
+
+<select name="time">
+
+<option>12:00 PM</option>
+<option>5:00 PM</option>
+<option>10:00 PM</option>
+
+</select>
+
+<select name="seat">
+
+<option>Silver</option>
+<option>Gold</option>
+<option>VIP</option>
+
+</select>
+
+<button>
+🎟 Book Ticket
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>
