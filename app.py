@@ -49,18 +49,13 @@ mail = Mail(app)
 # ==========================
 
 def get_db_connection():
-    try:
-        conn = mysql.connector.connect(
-            host="localhost",
-            user="root",
-            password="Rupin@23",
-            database="mallhub"
-        )
-        print("MySQL Connected")
-        return conn
-    except mysql.connector.Error as e:
-        print("Database Error:", e)
-        return None
+    return mysql.connector.connect(
+        host=os.getenv("DB_HOST"),
+        user=os.getenv("DB_USER"),
+        password=os.getenv("DB_PASSWORD"),
+        database=os.getenv("DB_NAME"),
+        port=int(os.getenv("DB_PORT", "3306"))
+    )
 
 
 # ==========================
