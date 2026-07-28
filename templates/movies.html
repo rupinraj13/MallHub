@@ -60,6 +60,13 @@ body{
     padding:40px;
 }
 
+.empty{
+    text-align:center;
+    color:#6b7280;
+    font-size:18px;
+    padding:60px 20px;
+}
+
 /* Card */
 
 .card{
@@ -113,6 +120,13 @@ input{
     border:1px solid #ddd;
 }
 
+label{
+    display:block;
+    margin-top:15px;
+    font-size:14px;
+    color:#374151;
+}
+
 button{
     width:100%;
     background:#e11d48;
@@ -127,6 +141,19 @@ button{
 
 button:hover{
     background:#be123c;
+}
+
+.details-link{
+    display:block;
+    margin-top:10px;
+}
+
+.details-btn{
+    background:#2563eb;
+}
+
+.details-btn:hover{
+    background:#1d4ed8;
 }
 
 </style>
@@ -147,153 +174,81 @@ button:hover{
 <a href="/dashboard">🏠 Back To Dashboard</a>
 </div>
 
+{% if movies %}
 <div class="movies">
 
-<!-- Movie 1 -->
-
+{% for movie in movies %}
 <div class="card">
 
-<img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba">
+<img src="{{ url_for('static', filename='posters/' + movie.poster) }}"
+     alt="{{ movie.movie_name }}">
 
 <div class="content">
 
-<h2>🚀 Space Adventure</h2>
+<h2>{{ movie.movie_name }}</h2>
 
-<p class="genre">Sci-Fi | Action</p>
+<p class="rating">⭐ {{ movie.rating }}/10</p>
 
-<p class="rating">⭐ 4.8 / 5</p>
+<p class="genre">🎭 {{ movie.genre }}</p>
 
-<p class="price">₹250</p>
+{% if movie.language %}
+<p class="genre">🌐 {{ movie.language }}</p>
+{% endif %}
 
-<form method="POST" action="/book_movie">
+{% if movie.duration %}
+<p class="genre">⏱ {{ movie.duration }}</p>
+{% endif %}
 
-<input type="hidden"
-name="movie"
-value="Space Adventure">
-
-<select name="time">
-
-<option>10:00 AM</option>
-<option>2:00 PM</option>
-<option>7:00 PM</option>
-
-</select>
-
-<select name="seat">
-
-<option>Silver</option>
-<option>Gold</option>
-<option>VIP</option>
-
-</select>
-
-<button>
-🎟 Book Ticket
-</button>
-
-</form>
-
-</div>
-
-</div>
-
-<!-- Movie 2 -->
-
-<div class="card">
-
-<img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c">
-
-<div class="content">
-
-<h2>❤️ Love Story</h2>
-
-<p class="genre">Romance | Drama</p>
-
-<p class="rating">⭐ 4.5 / 5</p>
-
-<p class="price">₹200</p>
+{% if movie.price %}
+<p class="price">₹{{ movie.price }}</p>
+{% endif %}
 
 <form method="POST" action="/book_movie">
 
-<input type="hidden"
-name="movie"
-value="Love Story">
+<input type="hidden" name="movie" value="{{ movie.movie_name }}">
+
+<label><b>🏢 Select Theatre</b></label>
+
+<select name="theatre">
+    <option>PVR Cinemas</option>
+    <option>INOX</option>
+    <option>AGS Cinemas</option>
+    <option>Cinepolis</option>
+</select>
+
+<label><b>📅 Select Date</b></label>
+
+<input type="date" name="show_date">
 
 <select name="time">
-
-<option>11:00 AM</option>
-<option>4:00 PM</option>
-<option>9:00 PM</option>
-
+    <option>10:00 AM</option>
+    <option>2:00 PM</option>
+    <option>7:00 PM</option>
 </select>
 
 <select name="seat">
-
-<option>Silver</option>
-<option>Gold</option>
-<option>VIP</option>
-
+    <option>Silver</option>
+    <option>Gold</option>
+    <option>VIP</option>
 </select>
 
-<button>
-🎟 Book Ticket
-</button>
+<button type="submit">🎟 Book Ticket</button>
 
 </form>
 
-</div>
-
-</div>
-
-<!-- Movie 3 -->
-
-<div class="card">
-
-<img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1">
-
-<div class="content">
-
-<h2>🔥 Action Hero</h2>
-
-<p class="genre">Action | Thriller</p>
-
-<p class="rating">⭐ 4.9 / 5</p>
-
-<p class="price">₹300</p>
-
-<form method="POST" action="/book_movie">
-
-<input type="hidden"
-name="movie"
-value="Action Hero">
-
-<select name="time">
-
-<option>12:00 PM</option>
-<option>5:00 PM</option>
-<option>10:00 PM</option>
-
-</select>
-
-<select name="seat">
-
-<option>Silver</option>
-<option>Gold</option>
-<option>VIP</option>
-
-</select>
-
-<button>
-🎟 Book Ticket
-</button>
-
-</form>
+<a class="details-link" href="/movie/{{ movie.id }}">
+    <button type="button" class="details-btn">🎟 View Details</button>
+</a>
 
 </div>
 
 </div>
+{% endfor %}
 
 </div>
+{% else %}
+<p class="empty">No movies are currently showing. Check back soon!</p>
+{% endif %}
 
 </body>
 </html>

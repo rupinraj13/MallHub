@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<title>Movie Payment | MallHub</title>
+
+<style>
+
+body{
+    font-family:Arial;
+    background:#f4f6f9;
+    margin:0;
+}
+
+.header{
+    background:#111827;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+.container{
+    width:500px;
+    margin:40px auto;
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+table{
+    width:100%;
+}
+
+td{
+    padding:12px;
+    font-size:18px;
+}
+
+.total{
+    font-size:24px;
+    color:green;
+    font-weight:bold;
+}
+
+button{
+    width:100%;
+    padding:15px;
+    margin-top:20px;
+    background:#2563eb;
+    color:white;
+    border:none;
+    border-radius:10px;
+    font-size:18px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+<h1>💳 Movie Payment</h1>
+
+</div>
+
+<div class="container">
+
+<table>
+
+<tr>
+<td>🎬 Movie</td>
+<td>{{ movie }}</td>
+</tr>
+
+<tr>
+<td>🏢 Theatre</td>
+<td>{{ theatre }}</td>
+</tr>
+
+<tr>
+<td>💺 Seats</td>
+<td>{{ seats }}</td>
+</tr>
+
+<tr>
+<td>🍿 Food</td>
+<td>{{ food }}</td>
+</tr>
+
+<tr>
+<td>🎟 Ticket Amount</td>
+<td>₹{{ ticket_amount }}</td>
+</tr>
+
+<tr>
+<td>🍔 Food Amount</td>
+<td>₹{{ food_amount }}</td>
+</tr>
+
+<tr>
+
+<td class="total">
+
+Total
+
+</td>
+
+<td class="total">
+
+₹{{ total }}
+
+</td>
+
+</tr>
+
+</table>
+
+<form action="/movie_payment" method="POST">
+
+<input type="hidden" name="total" value="{{ total }}">
+
+<button>
+
+💳 Pay Now
+
+</button>
+
+</form>
+
+</div>
+
+</body>
+
+</html>

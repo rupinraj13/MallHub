@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Seat Selection | MallHub Cinema</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#f4f4f4;
+}
+
+.header{
+
+background:#111827;
+color:white;
+padding:20px;
+text-align:center;
+
+}
+
+.container{
+
+width:90%;
+max-width:1000px;
+margin:30px auto;
+background:white;
+padding:30px;
+border-radius:15px;
+box-shadow:0 5px 20px rgba(0,0,0,.2);
+
+}
+
+.movie{
+
+text-align:center;
+margin-bottom:25px;
+
+}
+
+.movie h2{
+
+color:#111827;
+
+}
+
+.movie p{
+
+margin:5px 0;
+
+}
+
+.screen{
+
+width:80%;
+margin:30px auto;
+padding:15px;
+background:#ddd;
+text-align:center;
+font-weight:bold;
+border-radius:50px;
+box-shadow:0 5px 10px rgba(0,0,0,.3);
+
+}
+
+.seats{
+
+display:grid;
+grid-template-columns:repeat(6,70px);
+gap:15px;
+justify-content:center;
+margin-top:30px;
+
+}
+
+.seat{
+
+width:60px;
+height:60px;
+background:#27ae60;
+border-radius:10px;
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+cursor:pointer;
+font-weight:bold;
+
+}
+
+.seat:hover{
+
+background:#1e8449;
+
+}
+
+.booked{
+
+background:#e74c3c;
+cursor:not-allowed;
+
+}
+
+.selected{
+
+background:#f39c12;
+
+}
+
+.legend{
+
+display:flex;
+justify-content:center;
+gap:30px;
+margin-top:30px;
+
+}
+
+.box{
+
+width:25px;
+height:25px;
+display:inline-block;
+border-radius:5px;
+margin-right:8px;
+
+}
+
+.green{
+
+background:#27ae60;
+
+}
+
+.red{
+
+background:#e74c3c;
+
+}
+
+.orange{
+
+background:#f39c12;
+
+}
+
+.summary{
+
+margin-top:40px;
+text-align:center;
+
+}
+
+.summary h3{
+
+margin:10px;
+
+}
+
+button{
+
+margin-top:20px;
+padding:15px 40px;
+border:none;
+background:#2563eb;
+color:white;
+font-size:18px;
+border-radius:10px;
+cursor:pointer;
+
+}
+
+button:hover{
+
+background:#1d4ed8;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+<h1>🎬 MallHub Cinema</h1>
+
+</div>
+
+<div class="container">
+
+<div class="movie">
+
+<h2>{{ movie_name }}</h2>
+
+<p>🏢 {{ theatre }}</p>
+
+<p>📅 {{ show_date }}</p>
+
+<p>⏰ {{ show_time }}</p>
+
+</div>
+
+<div class="screen">
+
+SCREEN
+
+</div>
+
+<form action="/confirm_seats" method="POST">
+
+<input type="hidden" name="movie_name" value="{{ movie_name }}">
+<input type="hidden" name="theatre" value="{{ theatre }}">
+<input type="hidden" name="show_date" value="{{ show_date }}">
+<input type="hidden" name="show_time" value="{{ show_time }}">
+
+<div class="seats">
+
+{% for row in ['A','B','C','D','E'] %}
+
+{% for num in range(1,7) %}
+
+{% set seat=row~num %}
+
+<label>
+
+<input
+type="checkbox"
+name="seat_no"
+value="{{ seat }}"
+style="display:none;">
+
+<div class="seat">
+
+{{ seat }}
+
+</div>
+
+</label>
+
+{% endfor %}
+
+{% endfor %}
+
+</div>
+
+<div class="legend">
+
+<div>
+
+<span class="box green"></span>
+
+Available
+
+</div>
+
+<div>
+
+<span class="box orange"></span>
+
+Selected
+
+</div>
+
+<div>
+
+<span class="box red"></span>
+
+Booked
+
+</div>
+
+</div>
+
+<div class="summary">
+
+<h3>
+
+Ticket Price : ₹250 / Seat
+
+</h3>
+
+<h3 id="count">
+
+Selected Seats : 0
+
+</h3>
+
+<button>
+
+Continue →
+
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+<script>
+
+let seats=document.querySelectorAll("input[type=checkbox]");
+
+let total=document.getElementById("count");
+
+seats.forEach(function(box){
+
+box.addEventListener("change",function(){
+
+let selected=document.querySelectorAll("input[type=checkbox]:checked");
+
+total.innerHTML="Selected Seats : "+selected.length;
+
+if(box.checked){
+
+box.nextElementSibling.classList.add("selected");
+
+}else{
+
+box.nextElementSibling.classList.remove("selected");
+
+}
+
+});
+
+});
+
+</script>
+
+</body>
+
+</html>

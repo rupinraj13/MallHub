@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>MallHub Admin - Users</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f4f6f9;
+margin:0;
+}
+
+.header{
+background:#111827;
+color:white;
+padding:20px;
+text-align:center;
+}
+
+.container{
+width:95%;
+margin:30px auto;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+background:white;
+box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+th{
+background:#2563eb;
+color:white;
+padding:15px;
+}
+
+td{
+padding:12px;
+text-align:center;
+border-bottom:1px solid #ddd;
+}
+
+tr:hover{
+background:#f1f5f9;
+}
+
+a{
+text-decoration:none;
+padding:8px 15px;
+border-radius:6px;
+color:white;
+}
+
+.admin{
+background:#16a34a;
+}
+
+.delete{
+background:#dc2626;
+}
+
+.block{
+background:#f59e0b;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+<h1>👥 User Management</h1>
+
+</div>
+
+<div class="container">
+
+<table>
+
+<tr>
+
+<th>ID</th>
+<th>Username</th>
+<th>Email</th>
+<th>Role</th>
+<th>Promote</th>
+<th>Delete</th>
+
+</tr>
+
+{% for user in users %}
+
+<tr>
+
+<td>{{ user.id }}</td>
+
+<td>{{ user.username }}</td>
+
+<td>{{ user.email }}</td>
+
+<td>{{ user.role }}</td>
+
+<td>
+
+<a class="admin"
+href="/make_admin/{{ user.id }}">
+
+👑 Make Admin
+
+</a>
+
+</td>
+
+<td>
+
+<a class="delete"
+href="/delete_user/{{ user.id }}"
+onclick="return confirm('Delete this user?')">
+
+🗑 Delete
+
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</body>
+
+</html>

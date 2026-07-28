@@ -3,343 +3,361 @@
 
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>MallHub Dashboard</title>
+    <title>MallHub Dashboard</title>
 
-<style>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
-}
+        body {
+            background: #eef3f8;
+        }
 
-body{
-    background:#eef3f8;
-}
+        /* Header */
 
-/* Header */
+        .header {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            padding: 18px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, .2);
+        }
 
-.header{
-    background:linear-gradient(135deg,#1e3c72,#2a5298);
-    color:white;
-    padding:18px 40px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    box-shadow:0 5px 15px rgba(0,0,0,.2);
-}
+        .logo {
+            font-size: 30px;
+            font-weight: bold;
+        }
 
-.logo{
-    font-size:30px;
-    font-weight:bold;
-}
+        .user-info {
+            text-align: center;
+        }
 
-.user-info{
-    text-align:center;
-}
+        .header-right {
+            display: flex;
+            gap: 15px;
+        }
 
-.header-right{
-    display:flex;
-    gap:15px;
-}
+        .header-btn {
+            background: white;
+            color: #1e3c72;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 10px;
+            font-weight: bold;
+            transition: .3s;
+        }
 
-.header-btn{
-    background:white;
-    color:#1e3c72;
-    text-decoration:none;
-    padding:10px 18px;
-    border-radius:10px;
-    font-weight:bold;
-    transition:.3s;
-}
+        .header-btn:hover {
+            background: #ffd54f;
+        }
 
-.header-btn:hover{
-    background:#ffd54f;
-}
+        /* Main */
 
-/* Main */
+        .container {
+            padding: 35px;
+        }
 
-.container{
-    padding:35px;
-}
+        .title {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
 
-.title{
-    text-align:center;
-    color:#2c3e50;
-    margin-bottom:10px;
-}
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 35px;
+        }
 
-.subtitle{
-    text-align:center;
-    color:#666;
-    margin-bottom:35px;
-}
+        /* Stats */
 
-/* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
 
-.stats{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
-    margin-bottom:40px;
-}
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, .12);
+            transition: .3s;
+        }
 
-.stat-card{
-    background:white;
-    padding:25px;
-    border-radius:18px;
-    text-align:center;
-    box-shadow:0 5px 15px rgba(0,0,0,.12);
-    transition:.3s;
-}
+        .stat-card:hover {
+            transform: translateY(-8px);
+        }
 
-.stat-card:hover{
-    transform:translateY(-8px);
-}
+        .stat-card h1 {
+            color: #1e88e5;
+            margin-bottom: 10px;
+        }
 
-.stat-card h1{
-    color:#1e88e5;
-    margin-bottom:10px;
-}
+        .stat-card p {
+            color: #666;
+        }
 
-.stat-card p{
-    color:#666;
-}
+        /* Services */
 
-/* Services */
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
 
-.card-container{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:25px;
-}
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, .1);
+            transition: .3s;
+        }
 
-.card{
-    background:white;
-    border-radius:20px;
-    padding:30px;
-    text-align:center;
-    box-shadow:0 8px 20px rgba(0,0,0,.1);
-    transition:.3s;
-}
+        .card:hover {
+            transform: translateY(-10px);
+        }
 
-.card:hover{
-    transform:translateY(-10px);
-}
+        .card h2 {
+            margin-bottom: 12px;
+            color: #2c3e50;
+        }
 
-.card h2{
-    margin-bottom:12px;
-    color:#2c3e50;
-}
+        .card p {
+            color: #666;
+            margin-bottom: 20px;
+        }
 
-.card p{
-    color:#666;
-    margin-bottom:20px;
-}
+        .btn {
+            display: inline-block;
+            background: #1e88e5;
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 10px;
+            transition: .3s;
+        }
 
-.btn{
-    display:inline-block;
-    background:#1e88e5;
-    color:white;
-    text-decoration:none;
-    padding:12px 25px;
-    border-radius:10px;
-    transition:.3s;
-}
+        .btn:hover {
+            background: #1565c0;
+        }
 
-.btn:hover{
-    background:#1565c0;
-}
+        /* Footer */
 
-/* Footer */
-
-.footer{
-    margin-top:50px;
-    background:#2c3e50;
-    color:white;
-    text-align:center;
-    padding:18px;
-}
-
-</style>
+        .footer {
+            margin-top: 50px;
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 18px;
+        }
+    </style>
 
 </head>
 
 <body>
 
-<div class="header">
+    <div class="header">
 
-<div class="logo">
-🏬 MallHub
-</div>
+        <div class="logo">
+            🏬 MallHub
+        </div>
 
-<div class="user-info">
+        <div class="user-info">
 
-<h2>Welcome</h2>
+            <h2>Welcome</h2>
 
-<h3>{{ username }}</h3>
+            <h3>{{ username }}</h3>
 
-</div>
+        </div>
 
-<div class="header-right">
+        <div class="header-right">
 
-<a href="/profile" class="header-btn">
-👤 Profile
-</a>
+            <a href="/profile" class="header-btn">
+                👤 Profile
+            </a>
 
-<a href="/logout" class="header-btn">
-🚪 Logout
-</a>
+            <a href="/logout" class="header-btn">
+                🚪 Logout
+            </a>
 
-</div>
+        </div>
 
-</div>
+    </div>
 
-<div class="container">
+    <div class="container">
 
-<h1 class="title">
-Smart Mall Services Dashboard
-</h1>
+        <h1 class="title">
+            Smart Mall Services Dashboard
+        </h1>
 
-<p class="subtitle">
-Everything you need in one smart platform.
-</p>
+        <p class="subtitle">
+            Everything you need in one smart platform.
+        </p>
 
-<!-- Statistics -->
+        <!-- Statistics -->
 
-<div class="stats">
+        <div class="stats">
 
-<div class="stat-card">
-<h1>🛍</h1>
-<p>Shopping</p>
-</div>
+            <div class="stat-card">
+                <h1>🛍</h1>
+                <p>Shopping</p>
+            </div>
 
-<div class="stat-card">
-<h1>🍔</h1>
-<p>Food Court</p>
-</div>
+            <div class="stat-card">
+                <h1>🍔</h1>
+                <p>Food Court</p>
+            </div>
 
-<div class="stat-card">
-<h1>🎬</h1>
-<p>Movies</p>
-</div>
+            <div class="stat-card">
+                <h1>🎬</h1>
+                <p>Movies</p>
+            </div>
 
-<div class="stat-card">
-<h1>🚗</h1>
-<p>Parking</p>
-</div>
+            <div class="stat-card">
+                <h1>🚗</h1>
+                <p>Parking</p>
+            </div>
 
-</div>
+        </div>
 
-<!-- Service Cards -->
+        <!-- Service Cards -->
 
-<div class="card-container">
+        <div class="card-container">
 
-<div class="card">
-<h2>🛍 Shopping</h2>
-<p>Explore stores, products and offers.</p>
-<a href="/shopping" class="btn">Open</a>
-</div>
+            <div class="card">
+                <h2>🛍 Shopping</h2>
+                <p>Explore stores, products and offers.</p>
+                <a href="/shopping" class="btn">Open</a>
+            </div>
 
-<div class="card">
+            <div class="card">
 
-<h2>🏬 Store Locator</h2>
+                <h2>🏬 Store Locator</h2>
 
-<p>
-Find stores by floor and category.
-</p>
+                <p>
+                    Find stores by floor and category.
+                </p>
 
-<a href="/stores" class="btn">
-Open
-</a>
+                <a href="/stores" class="btn">
+                    Open
+                </a>
 
-</div>
+            </div>
 
-<div class="card">
-<h2>🍔 Food Court</h2>
-<p>Order delicious food online.</p>
-<a href="/foodcourt" class="btn">Open</a>
-</div>
+            <div class="card">
+                <h2>🍔 Food Court</h2>
+                <p>Order delicious food online.</p>
+                <a href="/foodcourt" class="btn">Open</a>
+            </div>
 
-<div class="card">
-<h2>🎬 Movies</h2>
-<p>Book cinema tickets instantly.</p>
-<a href="/movies" class="btn">Open</a>
-</div>
+            <div class="card">
+                <h2>🎬 Movies</h2>
+                <p>Book cinema tickets instantly.</p>
+                <a href="/movies" class="btn">Open</a>
+            </div>
 
-<div class="card">
-<h2>🚗 Parking</h2>
-<p>Reserve smart parking slots.</p>
-<a href="/parking" class="btn">Open</a>
-</div>
+            <div class="card">
+                <h2>🎬 Movie Booking History</h2>
+                <p>View your past movie bookings.</p>
+                <a href="/movie_history" class="btn">Open</a>
+            </div>
 
-<div class="card">
-<h2>📊 Admin</h2>
-<p>Manage users, orders and reports.</p>
-<a href="/admin" class="btn">Open</a>
-</div>
+            <div class="card">
+                <h2>🚗 Parking</h2>
+                <p>Reserve smart parking slots.</p>
+                <a href="/parking" class="btn">Open</a>
+            </div>
 
-<div class="card">
-<h2>👤 My Profile</h2>
-<p>View and manage your profile.</p>
-<a href="/profile" class="btn">Open</a>
-</div>
+            <div class="card">
+                <h2>📊 Admin</h2>
+                <p>Manage users, orders and reports.</p>
+                <a href="/admin" class="btn">Open</a>
+            </div>
 
-<div class="card">
+            <div class="card">
+                <h2>👤 My Profile</h2>
+                <p>View and manage your profile.</p>
+                <a href="/profile" class="btn">Open</a>
+            </div>
 
-<h2>🤖 AI Assistant</h2>
+            <div class="card">
 
-<p>
-Ask questions about the mall.
-</p>
+                <h2>🤖 AI Assistant</h2>
 
-<a href="/assistant" class="btn">
-Open AI
-</a>
+                <p>
+                    Ask questions about the mall.
+                </p>
 
-</div>
+                <a href="/assistant" class="btn">
+                    Open AI
+                </a>
 
-<div class="card">
+            </div>
 
-<h2>🔔 Notifications</h2>
+            <div class="card">
 
-<p>
-Latest offers and announcements
-</p>
+                <h2>🔔 Notifications</h2>
 
-<a href="/notifications" class="btn">
-View Notifications
-</a>
+                <p>
+                    Latest offers and announcements
+                </p>
 
-</div>
+                <a href="/notifications" class="btn">
+                    View Notifications
+                </a>
 
-<div class="card">
+            </div>
 
-<h2>📦 Order History</h2>
+            <div class="card">
 
-<p>
-View all your previous orders
-</p>
+                <h2>📦 Order History</h2>
 
-<a href="/order_history" class="btn">
-Open
-</a>
+                <p>
+                    View all your previous orders
+                </p>
 
-</div>
+                <a href="/order_history" class="btn">
+                    Open
+                </a>
 
-</div>
+            </div>
 
-</div>
+            {% if session.get("role") == "admin" %}
+            <div class="card">
+                <h2>🛠 Admin Dashboard</h2>
+                <p>Manage users, bookings and stats.</p>
+                <a href="/admin_dashboard" class="btn">Open</a>
+            </div>
+            {% endif %}
 
-<div class="footer">
+            <div class="card">
+                <h2>🤖 Chatbot</h2>
+                <p>Ask our smart assistant for help.</p>
+                <a href="/ai_assistant" class="btn">Open</a>
+            </div>
 
-© 2026 MallHub | Smart Shopping Platform | Developed by {{ username }}
+        </div>
 
-</div>
+    </div>
+
+    <div class="footer">
+
+        © 2026 MallHub | Smart Shopping Platform | Developed by {{ username }}
+
+    </div>
 
 </body>
 

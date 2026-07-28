@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Movie Management | MallHub</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#f4f6f9;
+}
+
+.header{
+
+background:#111827;
+color:white;
+padding:20px;
+text-align:center;
+
+}
+
+.container{
+
+width:95%;
+margin:30px auto;
+
+}
+
+.form-box{
+
+background:white;
+padding:25px;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,.2);
+margin-bottom:30px;
+
+}
+
+.form-box h2{
+
+margin-bottom:20px;
+
+}
+
+input{
+
+width:100%;
+padding:12px;
+margin:8px 0;
+border:1px solid #ccc;
+border-radius:8px;
+
+}
+
+button{
+
+padding:12px 20px;
+background:#2563eb;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+font-size:16px;
+
+}
+
+button:hover{
+
+background:#1d4ed8;
+
+}
+
+table{
+
+width:100%;
+background:white;
+border-collapse:collapse;
+box-shadow:0 5px 15px rgba(0,0,0,.2);
+
+}
+
+th{
+
+background:#2563eb;
+color:white;
+padding:15px;
+
+}
+
+td{
+
+padding:15px;
+text-align:center;
+border-bottom:1px solid #ddd;
+
+}
+
+img{
+
+width:70px;
+height:100px;
+object-fit:cover;
+border-radius:8px;
+
+}
+
+.edit{
+
+background:#16a34a;
+padding:8px 15px;
+border-radius:6px;
+text-decoration:none;
+color:white;
+
+}
+
+.delete{
+
+background:#dc2626;
+padding:8px 15px;
+border-radius:6px;
+text-decoration:none;
+color:white;
+
+}
+
+.back{
+
+display:inline-block;
+margin-bottom:20px;
+background:#111827;
+color:white;
+padding:10px 20px;
+text-decoration:none;
+border-radius:8px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+<h1>🎬 MallHub Admin - Movie Management</h1>
+
+</div>
+
+<div class="container">
+
+<a href="/admin_dashboard" class="back">
+
+⬅ Back to Dashboard
+
+</a>
+
+<div class="form-box">
+
+<h2>Add New Movie</h2>
+
+<form action="/add_movie" method="POST">
+
+<input
+type="text"
+name="movie_name"
+placeholder="Movie Name"
+required>
+
+<input
+type="text"
+name="language"
+placeholder="Language"
+required>
+
+<input
+type="text"
+name="genre"
+placeholder="Genre"
+required>
+
+<input
+type="text"
+name="duration"
+placeholder="Duration (2h 30m)"
+required>
+
+<input
+type="number"
+step="0.1"
+name="rating"
+placeholder="Rating"
+required>
+
+<input
+type="text"
+name="poster"
+placeholder="Poster Image (example: coolie.jpg)"
+required>
+
+<button>
+
+➕ Add Movie
+
+</button>
+
+</form>
+
+</div>
+
+<table>
+
+<tr>
+
+<th>ID</th>
+
+<th>Poster</th>
+
+<th>Movie</th>
+
+<th>Language</th>
+
+<th>Genre</th>
+
+<th>Duration</th>
+
+<th>Rating</th>
+
+<th>Edit</th>
+
+<th>Delete</th>
+
+</tr>
+
+{% for movie in movies %}
+
+<tr>
+
+<td>{{ movie.id }}</td>
+
+<td>
+
+<img src="{{ url_for('static', filename='posters/' + movie.poster) }}">
+
+</td>
+
+<td>{{ movie.movie_name }}</td>
+
+<td>{{ movie.language }}</td>
+
+<td>{{ movie.genre }}</td>
+
+<td>{{ movie.duration }}</td>
+
+<td>⭐ {{ movie.rating }}</td>
+
+<td>
+
+<a
+class="edit"
+href="/edit_movie/{{ movie.id }}">
+
+✏ Edit
+
+</a>
+
+</td>
+
+<td>
+
+<a
+class="delete"
+href="/delete_movie/{{ movie.id }}"
+onclick="return confirm('Delete this movie?');">
+
+🗑 Delete
+
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</body>
+
+</html>

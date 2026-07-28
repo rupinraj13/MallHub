@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Edit Movie | MallHub Admin</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#f4f6f9;
+}
+
+.header{
+background:#111827;
+color:white;
+padding:20px;
+text-align:center;
+}
+
+.container{
+width:600px;
+margin:40px auto;
+background:white;
+padding:30px;
+border-radius:15px;
+box-shadow:0 8px 20px rgba(0,0,0,.2);
+}
+
+h2{
+text-align:center;
+margin-bottom:25px;
+color:#111827;
+}
+
+.poster{
+display:block;
+margin:auto;
+width:180px;
+height:260px;
+object-fit:cover;
+border-radius:10px;
+margin-bottom:25px;
+box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+label{
+font-weight:bold;
+display:block;
+margin-top:15px;
+margin-bottom:8px;
+}
+
+input{
+width:100%;
+padding:12px;
+border:1px solid #ccc;
+border-radius:8px;
+font-size:16px;
+}
+
+.buttons{
+display:flex;
+justify-content:space-between;
+margin-top:30px;
+}
+
+.save{
+background:#16a34a;
+color:white;
+padding:14px 30px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+font-size:16px;
+}
+
+.save:hover{
+background:#15803d;
+}
+
+.cancel{
+background:#dc2626;
+color:white;
+padding:14px 30px;
+text-decoration:none;
+border-radius:8px;
+}
+
+.cancel:hover{
+background:#b91c1c;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+<h1>🎬 MallHub Admin</h1>
+
+</div>
+
+<div class="container">
+
+<h2>Edit Movie</h2>
+
+<img
+class="poster"
+src="{{ url_for('static', filename='posters/' + movie.poster) }}"
+alt="{{ movie.movie_name }}">
+
+<form method="POST">
+
+<label>Movie Name</label>
+
+<input
+type="text"
+name="movie_name"
+value="{{ movie.movie_name }}"
+required>
+
+<label>Language</label>
+
+<input
+type="text"
+name="language"
+value="{{ movie.language }}"
+required>
+
+<label>Genre</label>
+
+<input
+type="text"
+name="genre"
+value="{{ movie.genre }}"
+required>
+
+<label>Duration</label>
+
+<input
+type="text"
+name="duration"
+value="{{ movie.duration }}"
+required>
+
+<label>Rating</label>
+
+<input
+type="number"
+step="0.1"
+min="0"
+max="10"
+name="rating"
+value="{{ movie.rating }}"
+required>
+
+<label>Poster Image</label>
+
+<input
+type="text"
+name="poster"
+value="{{ movie.poster }}"
+required>
+
+<div class="buttons">
+
+<button class="save" type="submit">
+
+💾 Update Movie
+
+</button>
+
+<a href="/admin_movies" class="cancel">
+
+❌ Cancel
+
+</a>
+
+</div>
+
+</form>
+
+</div>
+
+</body>
+
+</html>

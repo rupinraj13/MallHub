@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>{{ movie.movie_name }} | MallHub Cinema</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+background:#111827;
+color:white;
+}
+
+.header{
+
+background:#1f2937;
+padding:18px 40px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+}
+
+.logo{
+
+font-size:30px;
+font-weight:bold;
+color:#ff4757;
+
+}
+
+.header a{
+
+color:white;
+text-decoration:none;
+font-weight:bold;
+margin-left:20px;
+
+}
+
+.container{
+
+width:90%;
+margin:40px auto;
+display:flex;
+gap:40px;
+align-items:flex-start;
+
+}
+
+.poster{
+
+width:330px;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,.5);
+
+}
+
+.details{
+
+flex:1;
+
+}
+
+.details h1{
+
+font-size:42px;
+margin-bottom:15px;
+
+}
+
+.info{
+
+margin:12px 0;
+font-size:20px;
+
+}
+
+.rating{
+
+color:#f1c40f;
+font-weight:bold;
+
+}
+
+.booking{
+
+margin-top:40px;
+background:#1f2937;
+padding:30px;
+border-radius:15px;
+
+}
+
+.booking h2{
+
+margin-bottom:20px;
+
+}
+
+label{
+
+display:block;
+margin-top:18px;
+margin-bottom:8px;
+font-size:18px;
+
+}
+
+select,
+input{
+
+width:100%;
+padding:14px;
+border:none;
+border-radius:8px;
+font-size:16px;
+
+}
+
+.bookbtn{
+
+margin-top:30px;
+width:100%;
+padding:15px;
+background:#e50914;
+color:white;
+font-size:20px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+
+}
+
+.bookbtn:hover{
+
+background:#b20710;
+
+}
+
+.footer{
+
+margin-top:60px;
+padding:20px;
+text-align:center;
+background:#1f2937;
+
+}
+
+.review-section{
+max-width:700px;
+margin:50px auto;
+background:#1f2937;
+border-radius:16px;
+padding:35px;
+}
+
+.review-section h2{
+color:#f59e0b;
+margin-bottom:20px;
+font-size:22px;
+}
+
+.review-section label{
+display:block;
+margin-bottom:6px;
+color:#9ca3af;
+font-size:14px;
+}
+
+.review-section select,
+.review-section textarea{
+width:100%;
+background:#111827;
+color:white;
+border:1px solid #374151;
+border-radius:8px;
+padding:10px;
+font-size:15px;
+}
+
+.review-section button{
+margin-top:15px;
+background:#e50914;
+color:white;
+border:none;
+padding:12px 28px;
+border-radius:10px;
+font-size:16px;
+cursor:pointer;
+}
+
+.review-section button:hover{
+background:#b20710;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+<div class="logo">
+
+🎬 MallHub Cinema
+
+</div>
+
+<div>
+
+<a href="/movies">Movies</a>
+
+<a href="/dashboard">Dashboard</a>
+
+</div>
+
+</div>
+
+<div class="container">
+
+<img
+class="poster"
+src="{{ url_for('static', filename='posters/' + movie.poster) }}">
+
+<div class="details">
+
+<h1>{{ movie.movie_name }}</h1>
+
+<p class="info">
+⭐ Rating :
+<span class="rating">
+{{ movie.rating }}/10
+</span>
+</p>
+
+<p class="info">
+🎭 Genre :
+{{ movie.genre }}
+</p>
+
+<p class="info">
+🌐 Language :
+{{ movie.language }}
+</p>
+
+<p class="info">
+⏱ Duration :
+{{ movie.duration }}
+</p>
+
+<div class="booking">
+
+<h2>Book Your Ticket</h2>
+
+<form action="/seat_selection" method="POST">
+
+<input
+type="hidden"
+name="movie_name"
+value="{{ movie.movie_name }}">
+
+<label>Select Theatre</label>
+
+<select name="theatre">
+
+<option>PVR Cinemas</option>
+<option>INOX</option>
+<option>AGS Cinemas</option>
+<option>Cinepolis</option>
+
+</select>
+
+<label>Select Date</label>
+
+<input
+type="date"
+name="show_date"
+required>
+
+<label>Show Time</label>
+
+<select name="show_time">
+
+<option>10:00 AM</option>
+<option>01:30 PM</option>
+<option>05:00 PM</option>
+<option>09:00 PM</option>
+
+</select>
+
+<button class="bookbtn">
+
+Continue →
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="review-section">
+
+<h2>⭐ Rate This Movie</h2>
+
+<form action="/movie_review" method="POST">
+
+    <input type="hidden"
+           name="movie_name"
+           value="{{ movie.movie_name }}">
+
+    <label>Rating</label>
+
+    <select name="rating" required>
+        <option value="5">⭐⭐⭐⭐⭐</option>
+        <option value="4">⭐⭐⭐⭐</option>
+        <option value="3">⭐⭐⭐</option>
+        <option value="2">⭐⭐</option>
+        <option value="1">⭐</option>
+    </select>
+
+    <br><br>
+
+    <label>Review</label>
+
+    <textarea
+        name="review"
+        rows="5"
+        placeholder="Write your review..."
+        required></textarea>
+
+    <br><br>
+
+    <button type="submit">
+        Submit Review
+    </button>
+
+</form>
+
+</div>
+
+<div class="footer">
+
+© 2026 MallHub Cinema
+
+</div>
+
+</body>
+
+</html>

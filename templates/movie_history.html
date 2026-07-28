@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Movie Booking History</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f4f6f9;
+margin:0;
+}
+
+.header{
+background:#111827;
+color:white;
+padding:20px;
+text-align:center;
+}
+
+.container{
+width:95%;
+margin:30px auto;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+background:white;
+box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+th{
+background:#2563eb;
+color:white;
+padding:15px;
+}
+
+td{
+padding:15px;
+text-align:center;
+border-bottom:1px solid #ddd;
+}
+
+tr:hover{
+background:#f1f5f9;
+}
+
+.back{
+display:inline-block;
+margin:20px;
+padding:12px 20px;
+background:#111827;
+color:white;
+text-decoration:none;
+border-radius:8px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+<h1>🎬 Movie Booking History</h1>
+
+</div>
+
+<div class="container">
+
+<a href="/dashboard" class="back">
+🏠 Dashboard
+</a>
+
+<table>
+
+<tr>
+
+<th>Movie</th>
+
+<th>Theatre</th>
+
+<th>Date</th>
+
+<th>Time</th>
+
+<th>Seat</th>
+
+<th>Amount</th>
+
+<th>Status</th>
+
+</tr>
+
+{% for booking in bookings %}
+
+<tr>
+
+<td>{{ booking.movie_name }}</td>
+
+<td>{{ booking.theatre }}</td>
+
+<td>{{ booking.show_date }}</td>
+
+<td>{{ booking.show_time }}</td>
+
+<td>{{ booking.seat_no }}</td>
+
+<td>₹{{ booking.amount }}</td>
+
+<td>{{ booking.payment_status }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</body>
+</html>

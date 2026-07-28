@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Movie Ticket</title>
+
+<style>
+
+body{
+
+background:#eceff1;
+font-family:Arial;
+
+}
+
+.ticket{
+
+width:650px;
+margin:40px auto;
+background:white;
+padding:30px;
+border-radius:20px;
+box-shadow:0 10px 20px rgba(0,0,0,.2);
+
+}
+
+h1{
+
+text-align:center;
+color:#e50914;
+
+}
+
+.row{
+
+display:flex;
+justify-content:space-between;
+margin:15px 0;
+font-size:18px;
+
+}
+
+.qr{
+
+text-align:center;
+margin-top:30px;
+
+}
+
+.qr img{
+
+width:220px;
+
+}
+
+.download{
+
+display:block;
+text-align:center;
+margin-top:30px;
+
+}
+
+.download a{
+
+background:#2563eb;
+color:white;
+padding:15px 25px;
+text-decoration:none;
+border-radius:10px;
+
+}
+
+.send-email a{
+
+background:#16a34a;
+color:white;
+padding:15px 25px;
+text-decoration:none;
+border-radius:10px;
+
+}
+
+.actions{
+
+display:flex;
+justify-content:center;
+gap:20px;
+margin-top:30px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="ticket">
+
+<h1>🎬 MallHub Cinema Ticket</h1>
+
+<div class="row">
+
+<b>Booking ID</b>
+
+<span>{{ booking_id }}</span>
+
+</div>
+
+<div class="row">
+
+<b>Movie</b>
+
+<span>{{ movie }}</span>
+
+</div>
+
+<div class="row">
+
+<b>Theatre</b>
+
+<span>{{ theatre }}</span>
+
+</div>
+
+<div class="row">
+
+<b>Date</b>
+
+<span>{{ show_date }}</span>
+
+</div>
+
+<div class="row">
+
+<b>Time</b>
+
+<span>{{ show_time }}</span>
+
+</div>
+
+<div class="row">
+
+<b>Seats</b>
+
+<span>{{ seats }}</span>
+
+</div>
+
+<div class="qr">
+
+<img src="{{ url_for('static', filename='tickets/' + qr_image) }}">
+
+<p>Scan this QR Code at the theatre entrance.</p>
+
+</div>
+
+<div class="actions">
+
+<div class="download">
+
+<a href="{{ url_for('static', filename='tickets/' + qr_image) }}" download>
+
+⬇ Download QR Code
+
+</a>
+
+</div>
+
+<div class="send-email">
+
+<a href="/send_ticket">
+
+📧 Send Ticket to Email
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+
+</html>
